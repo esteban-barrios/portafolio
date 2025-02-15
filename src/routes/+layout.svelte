@@ -4,17 +4,40 @@
   import { slide } from "svelte/transition";
 
   let sections = ["home", "experience", "skills", "projects", "contact"];
+  let currentSection = $state(sections[0]);
   let isMobile = $state((innerWidth.current ?? 0) < 768);
   let showSections = $state(false);
   let { children } = $props();
+  let wrapper: HTMLElement;
   
   $effect(() => {
     isMobile = (innerWidth.current ?? 0) < 768;
     showSections = !isMobile;
   });
+
+  const onScroll = () => {
+    let sectionHeight = wrapper.scrollHeight / sections.length;
+    let currentPosition = wrapper.scrollTop;
+    if(currentPosition < 2* sectionHeight /3){
+      currentSection = sections[0];
+    }
+    else if(currentPosition >= 2*sectionHeight/3 && currentPosition < (2*sectionHeight- sectionHeight/3) ){
+      currentSection = sections[1];
+    }
+    else if(currentPosition >= (2*sectionHeight- sectionHeight/3) && currentPosition < (3*sectionHeight- sectionHeight/3) ){
+      currentSection = sections[2];
+    }
+    else if(currentPosition >= (3*sectionHeight- sectionHeight/3) && currentPosition < (4*sectionHeight- sectionHeight/3) ){
+      currentSection = sections[3];
+    }
+    else{
+      currentSection = sections[4];
+    }
+    
+  };
 </script>
 
-<div class="wrapper">
+<div class="wrapper" onscroll={onScroll} bind:this={wrapper}>
   <nav>
     <h1>Esteban</h1>
     {#if isMobile}
@@ -29,7 +52,7 @@
     {:else}
       <ul>
         {#each sections as section, i}
-          <li class="link-button">
+          <li class="link-button {currentSection === section ? 'active' : ''}">
             <a href="#section-{i}">{section}</a>
           </li>
         {/each}
@@ -40,7 +63,7 @@
     <ul class="mobile-menu">
       {#each sections as section, i}
         <div class="border-bottom" transition:slide|global>
-          <li class="link-button">
+          <li class="link-button {currentSection === section ? 'active' : ''}">
             <a href="#section-{i}">{section}</a>
           </li>
         </div>
