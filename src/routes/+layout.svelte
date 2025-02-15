@@ -77,20 +77,20 @@
 
 <style>
   .wrapper {
+    position: fixed;
+    top: 0;
     height: 100dvh;
     width: 100%;
     width: -webkit-fill-available;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    justify-content: center;
+    scroll-behavior: smooth;
     overflow-y: scroll;
   }
   nav {
     position: fixed;
     top: 0;
-    width: 90%;
+    width: 100%;
+    width: -webkit-fill-available;
+    padding: 0 2rem;
     height: 4rem;
     display: flex;
     justify-content: space-between;
@@ -103,9 +103,9 @@
   }
 
   .mobile-menu {
-    width: 100%;
     position: fixed;
-    top: 4rem;
+    width: 100%;
+    top: 6rem;
   }
   .border-bottom {
     padding: 0.5rem 1rem;
@@ -127,19 +127,32 @@
   }
   @media (min-width: 768px) {
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 15%;
+      padding:0;
+      width: min(20%,17.813rem);
       height: 100dvh;
       flex-direction: column;
       justify-content: start;
-      align-items: start;
+      align-items: center;
+    }
+    nav ul{
+      margin-top: 4rem;
+    }
+    nav h1, nav ul li{
+      margin-top: 2rem;
     }
     main {
-      width: 85%;
+      width:max(80%,100% - 17.813rem);
       height: 100dvh;
-      margin-left: 15%;
+      margin-left: min(20%, 17.813rem);
     }
+  }
+  @media (min-width: 1024px) {
+    nav{
+      align-items: start;
+    }
+    nav h1, nav ul{
+      margin-left: 3rem;
+    }
+
   }
 </style>
