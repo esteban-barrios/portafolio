@@ -1,23 +1,13 @@
 <script lang="ts">
-  import {sections} from "./shared"
+  import Home from "$lib/sections/Home.svelte";
+  import Experience from "$lib/sections/Experience.svelte";
+  import Skills from "$lib/sections/Skills.svelte";
+  import Projects from "$lib/sections/Projects.svelte";
+  import Contact from "$lib/sections/Contact.svelte";
 </script>
 
-{#each sections.list as section,i}
-  <section id="section-{i}" class="{section}">{section}</section>
-{/each}
-
-<style>
-
-  section {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-  }
-  .home { background: #f4a261; }
-  .experience { background: #e76f51; }
-  .skills { background: #2a9d8f; }
-  .projects { background: #264653; color: white; }
-  .contact { background: #8ecae6; }
-</style>
+<Home/>
+<Experience/>
+<Skills/>
+<Projects/>
+<Contact/>
