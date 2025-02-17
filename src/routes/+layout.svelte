@@ -1,158 +1,145 @@
 <script lang="ts">
   import "$lib/global.css";
-  import { innerWidth } from "svelte/reactivity/window";
-  import { slide } from "svelte/transition";
 
-  let sections = ["home", "experience", "skills", "projects", "contact"];
-  let currentSection = $state(sections[0]);
-  let isMobile = $state((innerWidth.current ?? 0) < 768);
-  let showSections = $state(false);
   let { children } = $props();
-  let wrapper: HTMLElement;
-  
-  $effect(() => {
-    isMobile = (innerWidth.current ?? 0) < 768;
-    showSections = !isMobile;
-  });
 
-  const onScroll = () => {
-    let sectionHeight = wrapper.scrollHeight / sections.length;
-    let currentPosition = wrapper.scrollTop;
-    if(currentPosition < 2* sectionHeight /3){
-      currentSection = sections[0];
+  let sections = ["home", "about", "work", "contact"];
+  let currentSection = $state(0);
+  let isOpen = $state(false);
+  let y = $state(0);
+  let height = $state(0);
+  let section_height = $derived(height/(sections.length));
+  
+  const handleOnScroll = () => {
+    let percentage = y / (height-section_height) * 100;
+    if (percentage >= 85 ){
+      currentSection = 3;
     }
-    else if(currentPosition >= 2*sectionHeight/3 && currentPosition < (2*sectionHeight- sectionHeight/3) ){
-      currentSection = sections[1];
+    else if (percentage >= 50 ){
+      currentSection = 2;
     }
-    else if(currentPosition >= (2*sectionHeight- sectionHeight/3) && currentPosition < (3*sectionHeight- sectionHeight/3) ){
-      currentSection = sections[2];
-    }
-    else if(currentPosition >= (3*sectionHeight- sectionHeight/3) && currentPosition < (4*sectionHeight- sectionHeight/3) ){
-      currentSection = sections[3];
+    else if (percentage >= 25 ){
+      currentSection = 1;
     }
     else{
-      currentSection = sections[4];
+      currentSection = 0;
     }
-    
-  };
+  }
 </script>
 
-<div class="wrapper" onscroll={onScroll} bind:this={wrapper}>
-  <nav>
-    <h1>Esteban</h1>
-    {#if isMobile}
-      <label>
-        <input type="checkbox" bind:checked={showSections} />
-        {#if showSections}
-          <i class="fas fa-times"></i>
-        {:else}
-          <i class="fas fa-bars"></i>
-        {/if}
-      </label>
-    {:else}
-      <ul>
-        {#each sections as section, i}
-          <li class="link-button {currentSection === section ? 'active' : ''}">
-            <a href="#section-{i}">{section}</a>
-          </li>
-        {/each}
-      </ul>
-    {/if}
-  </nav>
-  {#if showSections && isMobile}
-    <ul class="mobile-menu">
-      {#each sections as section, i}
-        <div class="border-bottom" transition:slide|global>
-          <li class="link-button {currentSection === section ? 'active' : ''}">
-            <a href="#section-{i}">{section}</a>
-          </li>
-        </div>
-      {/each}
-    </ul>
-  {/if}
-  <main>
-    {@render children()}
-  </main>
-</div>
+<svelte:window bind:scrollY={y} />
+<svelte:document onscroll={handleOnScroll} />
+
+<nav>
+  <div class="logo">Esteban</div>
+    
+  <label class="hamburguer">
+    <input type="checkbox" bind:checked={isOpen} />
+    <i class="fas {isOpen ? 'fa-times' : 'fa-bars'}" ></i>
+  </label>
+
+  <ul class="menu {isOpen ? 'active' : ''}">
+    {#each sections as section, i}
+      <li class="link {currentSection === i ? 'active' : ''}">
+        <a href="#section-{i}">{section}</a>
+      </li>
+    {/each}
+  </ul>
+</nav>
+  
+<main bind:clientHeight={height}>
+  {@render children()}
+</main>
+
 
 <style>
-  .wrapper {
-    position: fixed;
-    top: 0;
-    height: 100dvh;
-    width: 100%;
-    width: -webkit-fill-available;
-    scroll-behavior: smooth;
-    overflow-y: scroll;
-  }
   nav {
     position: fixed;
-    top: 0;
     width: 100%;
     width: -webkit-fill-available;
-    padding: 0 2rem;
-    height: 4rem;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    text-align: left;
+    font-size: 1.25rem;
+    padding: 2rem;
   }
-  main {
+  .logo {
+    font-size: 2rem;
+    font-family: "Monsieur La Doulaise", serif;
+    font-weight: 400;
+  }
+  .menu{
+    display: none;
     width: 100%;
+  }
+  .menu.active {
+    display: block;
+  }
+  .link {
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    z-index: 1;
+  }
+  .link.active{
+    font-weight: bold;
   }
 
-  .mobile-menu {
-    position: fixed;
-    width: 100%;
-    top: 6rem;
-  }
-  .border-bottom {
-    padding: 0.5rem 1rem;
-    border-top: 1px solid #eee;
-  }
   input[type="checkbox"] {
     display: none;
   }
   .fas {
-    font-size: 24px;
+    font-size: 1.25rem;
   }
-  .link-button {
-    text-transform: uppercase;
-    font-size: 20px;
-  }
-  .active {
-    font-weight: bold;
-    color: red;
-  }
+
   @media (min-width: 768px) {
     nav {
-      padding:0;
-      width: min(20%,17.813rem);
       height: 100dvh;
+      width: min(15%, 15rem);
+      background-color: #141313;
       flex-direction: column;
       justify-content: start;
-      align-items: center;
+      align-items: start;
+      gap:1rem;
     }
-    nav ul{
-      margin-top: 4rem;
+    .logo{
+      margin-bottom: 2rem;
+      color:white;
     }
-    nav h1, nav ul li{
-      margin-top: 2rem;
+    .link{
+      color:white;
     }
     main {
-      width:max(80%,100% - 17.813rem);
-      height: 100dvh;
-      margin-left: min(20%, 17.813rem);
+      width: max(85% - 4rem, 100% - 15rem - 4rem);
+      margin-left: min(15% + 4rem, 15rem + 4rem);
     }
-  }
-  @media (min-width: 1024px) {
-    nav{
-      align-items: start;
+    .hamburguer{
+      display:none;
     }
-    nav h1, nav ul{
-      margin-left: 3rem;
+    .menu {
+      display: contents;
     }
-
+    .link{
+      position: relative;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      display: inline-block;
+    }
+    .link.active::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0.4rem;
+      width: 100%;
+      height: 0.25rem;
+      transition: all 0.3s ease;
+      transform: translateX(-50%); /* Centrar la línea con el texto */
+      background: linear-gradient(50deg,#B86ADF, #FF6C63, #FFB147);
+      z-index: -1;
+    }
   }
 </style>
