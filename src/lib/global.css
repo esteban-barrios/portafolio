@@ -26,9 +26,31 @@ h1{
 }
 
 section {
-  height: 100dvh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
+  scroll-margin-top: 4rem;
+  height: calc(100dvh - 4rem);
+}
+@media (min-width: 768px) {
+  section {
+    scroll-margin-top:0;
+    height: 100dvh;
+    padding: 4rem 6rem;
+  }
+}
+.container {
+  width: 80%;
+  margin-inline: auto;
+}
+
+button {
+  background-color: #FD853A;
+  border-color: transparent;
+  border-radius: 20px;
+  padding: 0.85rem 1.75rem;
+  color:white;
+  width: max-content;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #141313;
 }

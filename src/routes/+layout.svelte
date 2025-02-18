@@ -25,23 +25,27 @@
       currentSection = 0;
     }
   }
+  const onClickLink = () =>{
+    isOpen = !isOpen;
+  }
 </script>
 
 <svelte:window bind:scrollY={y} />
 <svelte:document onscroll={handleOnScroll} />
 
 <nav>
-  <div class="logo">Esteban</div>
-    
-  <label class="hamburguer">
-    <input type="checkbox" bind:checked={isOpen} />
-    <i class="fas {isOpen ? 'fa-times' : 'fa-bars'}" ></i>
-  </label>
+  <div class="nav-container">
+    <div class="logo">Esteban</div>
+    <label class="hamburguer">
+      <input id="hamburguer-toogle" type="checkbox" bind:checked={isOpen}/>
+      <i class="fas {isOpen ? 'fa-times' : 'fa-bars'}" ></i>
+    </label>
+  </div>
 
   <ul class="menu {isOpen ? 'active' : ''}">
     {#each sections as section, i}
       <li class="link {currentSection === i ? 'active' : ''}">
-        <a href="#section-{i}">{section}</a>
+        <a href="#section-{i}" onclick={onClickLink}>{section}</a>
       </li>
     {/each}
   </ul>
@@ -55,27 +59,58 @@
 <style>
   nav {
     position: fixed;
+    top:0;
+    height: 4rem;
     width: 100%;
     width: -webkit-fill-available;
+    font-size: 1.25rem;
+    background-color: #141313;
+    color:white;
+    align-content: center;
+    z-index: 10;
+  }
+  main {
+    position: absolute;
+    top:4rem;
+  }
+  .nav-container{
+    width: 80%;
+    margin-inline: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    font-size: 1.25rem;
-    padding: 2rem;
   }
   .logo {
     font-size: 2rem;
     font-family: "Monsieur La Doulaise", serif;
     font-weight: 400;
   }
-  .menu{
-    display: none;
+  .menu {
+    position: fixed;
+    top: 4rem;
+    right: -100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    transition: right 0.3s ease-in-out;
+    background-color: #141313;
   }
+
   .menu.active {
-    display: block;
+    right: 0;
+  }
+
+  .menu li {
+    list-style: none;
+    margin: 1rem 0;
+  }
+  .menu a {
+    text-decoration: none;
+    font-size: 1.2rem;
   }
   .link {
     position: relative;
@@ -83,10 +118,23 @@
     transition: color 0.3s ease;
     text-transform: uppercase;
     margin-top: 1rem;
-    z-index: 1;
+    z-index: 0;
   }
   .link.active{
     font-weight: bold;
+  }
+
+  .link.active::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0.4rem;
+    width: 100%;
+    height: 0.25rem;
+    transition: all 0.3s ease;
+    transform: translateX(-50%); /* Centrar la línea con el texto */
+    background: linear-gradient(50deg,#B86ADF, #FF6C63, #FFB147);
+    z-index: -1;
   }
 
   input[type="checkbox"] {
@@ -97,25 +145,28 @@
   }
 
   @media (min-width: 768px) {
+    main {
+      top:0;
+      width: max(85% - 4rem, 100% - 15rem - 4rem);
+      margin-left: min(15% + 4rem, 15rem + 4rem);
+    }
     nav {
       height: 100dvh;
       width: min(15%, 15rem);
-      background-color: #141313;
+      padding: 2rem;
+      display: flex;
       flex-direction: column;
       justify-content: start;
       align-items: start;
       gap:1rem;
     }
+    .nav-container {
+      display: block;
+      width: 100%;
+      margin: 0;
+    }
     .logo{
       margin-bottom: 2rem;
-      color:white;
-    }
-    .link{
-      color:white;
-    }
-    main {
-      width: max(85% - 4rem, 100% - 15rem - 4rem);
-      margin-left: min(15% + 4rem, 15rem + 4rem);
     }
     .hamburguer{
       display:none;
@@ -124,22 +175,7 @@
       display: contents;
     }
     .link{
-      position: relative;
-      cursor: pointer;
-      transition: color 0.3s ease;
       display: inline-block;
-    }
-    .link.active::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0.4rem;
-      width: 100%;
-      height: 0.25rem;
-      transition: all 0.3s ease;
-      transform: translateX(-50%); /* Centrar la línea con el texto */
-      background: linear-gradient(50deg,#B86ADF, #FF6C63, #FFB147);
-      z-index: -1;
     }
   }
 </style>
