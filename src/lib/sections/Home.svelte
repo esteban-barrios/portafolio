@@ -2,7 +2,7 @@
   const onClickButton = () => {
     let element = document.getElementById("section-1");
     element?.scrollIntoView();
-  }
+  };
 </script>
 
 <section id="section-0" class="home">
@@ -14,85 +14,76 @@
       </div>
       <div class="description">
         <p>
-          Software Engineer graduated from Universidad Técnica Federico Santa María. My interest lies in web and mobile development to drive digital transformation in companies across the industries.<br><br>
-          I firmly believe in the premise that <strong>"A good plan today is better than a perfect plan tomorrow."</strong>
+          Software Engineer graduated from Universidad Técnica Federico Santa
+          María. My interest lies in web and mobile development to drive digital
+          transformation in companies across the industries.<br /><br />
+          I firmly believe in the premise that
+          <strong
+            >"A good plan today is better than a perfect plan tomorrow."</strong
+          >
         </p>
       </div>
       <button onclick={onClickButton}> Read More </button>
     </div>
     <div class="img-container">
-      <img src="home-img-2.png" alt="Esteban's avatar"/>
+      <img src="home-img-2.png" alt="Esteban's avatar" />
     </div>
   </div>
 </section>
 
 <style>
-
-  .container {
-    margin-top: 2rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    align-items: center;
+  .home {
+    background-color: whitesmoke;
   }
-  .content {
+  .home .container {
     height: 100%;
-    width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
   }
-  .title {
-    font-size: clamp(1.75rem, 3vw + 1rem, 4rem);
-    text-transform: uppercase;
-    margin-bottom: max(10%,2rem);
+  .home .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  .title h1 {
+  .home .title h1 {
     font-size: inherit;
-    background: linear-gradient(to right,#B86ADF, #FF6C63, #FFB147);
+    background: linear-gradient(to right, #b86adf, #ff6c63, #ffb147);
     background-clip: text;
     color: transparent;
     margin-right: 0.5rem;
   }
-  .description p {
-    font-size: clamp(.85rem, 1vw + 0.5rem, 1rem);
-    line-height: 1.6; 
-    max-width: 100%; 
-    word-wrap: break-word;
-    margin-bottom: 2rem;
+  .home .title {
+    margin-bottom: min(2rem, 3vh);
+    font-size: clamp(1.75rem, 3vw + 1rem, 4rem);
+    text-transform: uppercase;
   }
-  .img-container {
-    width: 70%;
-    margin: auto;
-  }
-  img {
+  .home .description p {
+    margin-bottom: max(2rem, 3vh);
+    font-size: clamp(0.85rem, 1vw + 0.5rem, 1rem);
+    line-height: 1.6;
     max-width: 100%;
-    height: auto;
-    aspect-ratio: 1/1;
-    object-fit: contain;
+    word-wrap: break-word;
   }
-  button {
-      align-self: flex-end;
-    }
-  @media (min-width: 768px) {
-    .container {
-      width: 100%;
-      margin:0;
-    }   
-    .img-container{
-      width: 60%;
-    }
+  .home .img-container {
+    max-width: 20rem;
+    width: 80%;
+    margin-inline: auto;
   }
-  @media (min-width: 1440px) {
-    .container {
-      grid-template-columns: 40% 60%;
+  .home button {
+    align-self: flex-end;
+  }
+  @media (min-width: 1024px) {
+    .home .container {
+      flex-direction: row;
+      align-items: center;
     }
-    .img-container{
-      width: 80%;
+    .home .content {
+      width: 50%;
     }
-    .content {
-      margin-top: 25%;
+    .home .img-container {
+      max-width: 40rem;
+      width: 50%;
     }
-
-    
   }
 </style>

@@ -25,6 +25,16 @@ h1{
   margin:0;
 }
 
+p{
+  margin:0;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+
 section {
   scroll-margin-top: 4rem;
   height: calc(100dvh - 4rem);
@@ -33,7 +43,6 @@ section {
   section {
     scroll-margin-top:0;
     height: 100dvh;
-    padding: 4rem 6rem;
   }
 }
 .container {

@@ -8,26 +8,31 @@
   let isOpen = $state(false);
   let y = $state(0);
   let height = $state(0);
-  let section_height = $derived(height/(sections.length));
-  
+  let section_height = $derived(height / sections.length);
+
   const handleOnScroll = () => {
-    let percentage = y / (height-section_height) * 100;
-    if (percentage >= 85 ){
+    let percentage = (y / (height - section_height)) * 100;
+    if (percentage >= 85) {
       currentSection = 3;
-    }
-    else if (percentage >= 50 ){
+    } else if (percentage >= 50) {
       currentSection = 2;
-    }
-    else if (percentage >= 25 ){
+    } else if (percentage >= 25) {
       currentSection = 1;
-    }
-    else{
+    } else {
       currentSection = 0;
     }
-  }
-  const onClickLink = () =>{
+  };
+  const onClickLink = (id: number) => {
+    let element = document.getElementById("section-" + id);
+    if (element) {
+      let top = element.offsetTop +1;
+      window.scrollTo({
+        top: top,
+        behavior: "smooth",
+      });
+    }
     isOpen = !isOpen;
-  }
+  };
 </script>
 
 <svelte:window bind:scrollY={y} />
@@ -37,43 +42,48 @@
   <div class="nav-container">
     <div class="logo">Esteban</div>
     <label class="hamburguer">
-      <input id="hamburguer-toogle" type="checkbox" bind:checked={isOpen}/>
-      <i class="fas {isOpen ? 'fa-times' : 'fa-bars'}" ></i>
+      <input id="hamburguer-toogle" type="checkbox" bind:checked={isOpen} />
+      <i class="fas {isOpen ? 'fa-times' : 'fa-bars'}"></i>
     </label>
   </div>
 
   <ul class="menu {isOpen ? 'active' : ''}">
     {#each sections as section, i}
       <li class="link {currentSection === i ? 'active' : ''}">
-        <a href="#section-{i}" onclick={onClickLink}>{section}</a>
+        <button onclick={() => onClickLink(i)}>{section}</button>
       </li>
     {/each}
   </ul>
 </nav>
-  
+
 <main bind:clientHeight={height}>
   {@render children()}
 </main>
 
-
 <style>
   nav {
     position: fixed;
-    top:0;
+    top: 0;
     height: 4rem;
     width: 100%;
     width: -webkit-fill-available;
     font-size: 1.25rem;
     background-color: #141313;
-    color:white;
+    color: white;
     align-content: center;
     z-index: 10;
   }
   main {
     position: absolute;
-    top:4rem;
+    top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+    width: 100%;
+    width: -webkit-fill-available;
   }
-  .nav-container{
+  .nav-container {
     width: 80%;
     margin-inline: auto;
     display: flex;
@@ -103,38 +113,39 @@
   .menu.active {
     right: 0;
   }
-
+  
   .menu li {
-    list-style: none;
-    margin: 1rem 0;
-  }
-  .menu a {
-    text-decoration: none;
-    font-size: 1.2rem;
-  }
-  .link {
     position: relative;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    text-transform: uppercase;
-    margin-top: 1rem;
+    margin: 1rem 0;
     z-index: 0;
+    transition: all 0.3s ease;
   }
-  .link.active{
+  .menu li:hover{
+    scale:1.1;
+  }
+  .menu li.active {
     font-weight: bold;
+    scale:1.1;
   }
 
-  .link.active::after {
+  .menu li.active::after {
     content: "";
     position: absolute;
     left: 50%;
     bottom: 0.4rem;
     width: 100%;
     height: 0.25rem;
-    transition: all 0.3s ease;
     transform: translateX(-50%); /* Centrar la línea con el texto */
-    background: linear-gradient(50deg,#B86ADF, #FF6C63, #FFB147);
+    background: linear-gradient(50deg, #b86adf, #ff6c63, #ffb147);
     z-index: -1;
+  }
+
+  .menu li button{
+    background-color: transparent;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    padding: 0 1rem 0 0;
+    cursor:pointer;
   }
 
   input[type="checkbox"] {
@@ -146,7 +157,7 @@
 
   @media (min-width: 768px) {
     main {
-      top:0;
+      top: 0;
       width: max(85% - 4rem, 100% - 15rem - 4rem);
       margin-left: min(15% + 4rem, 15rem + 4rem);
     }
@@ -158,23 +169,23 @@
       flex-direction: column;
       justify-content: start;
       align-items: start;
-      gap:1rem;
+      gap: 1rem;
     }
     .nav-container {
       display: block;
       width: 100%;
       margin: 0;
     }
-    .logo{
+    .logo {
       margin-bottom: 2rem;
     }
-    .hamburguer{
-      display:none;
+    .hamburguer {
+      display: none;
     }
     .menu {
       display: contents;
     }
-    .link{
+    .link {
       display: inline-block;
     }
   }
