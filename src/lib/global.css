@@ -63,3 +63,25 @@ button {
 button:hover {
   background-color: #141313;
 }
+
+.title {
+  margin-top:min(2rem, 3vh);
+  margin-bottom: min(2rem, 3vh);
+  font-size: clamp(1.75rem, 3vw + 1rem, 4rem);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.title span {
+  font-size: inherit;
+  background: linear-gradient(to right, #b86adf, #ff6c63, #ffb147);
+  background-clip: text;
+  color: transparent;
+}
+
+p {
+  margin-bottom: max(2rem, 3vh);
+  font-size: clamp(0.75rem, 1vw + 0.25rem, 0.85rem);
+  line-height: 1.6;
+  max-width: 100%;
+  word-wrap: break-word;
+}

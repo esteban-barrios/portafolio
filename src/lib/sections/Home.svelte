@@ -9,8 +9,8 @@
   <div class="container">
     <div class="content">
       <div class="title">
-        <h1>Software</h1>
-        Engineer
+        <span>Full-Stack</span>
+        Developer
       </div>
       <div class="description">
         <p>
@@ -23,7 +23,7 @@
           >
         </p>
       </div>
-      <button onclick={onClickButton}> Read More </button>
+      <button onclick={onClickButton}> About Me </button>
     </div>
     <div class="img-container">
       <img src="home-img-2.png" alt="Esteban's avatar" />
@@ -33,7 +33,7 @@
 
 <style>
   .home {
-    background-color: whitesmoke;
+    background-color: white;
   }
   .home .container {
     height: 100%;
@@ -46,25 +46,7 @@
     flex-direction: column;
     justify-content: center;
   }
-  .home .title h1 {
-    font-size: inherit;
-    background: linear-gradient(to right, #b86adf, #ff6c63, #ffb147);
-    background-clip: text;
-    color: transparent;
-    margin-right: 0.5rem;
-  }
-  .home .title {
-    margin-bottom: min(2rem, 3vh);
-    font-size: clamp(1.75rem, 3vw + 1rem, 4rem);
-    text-transform: uppercase;
-  }
-  .home .description p {
-    margin-bottom: max(2rem, 3vh);
-    font-size: clamp(0.85rem, 1vw + 0.5rem, 1rem);
-    line-height: 1.6;
-    max-width: 100%;
-    word-wrap: break-word;
-  }
+
   .home .img-container {
     max-width: 20rem;
     width: 80%;
