@@ -44,17 +44,11 @@
 
 <style>
   .about {
-    background: white;
-  }
-
-  .about .container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    background: #f9f9f9;
   }
 
   .timeline {
+    margin-top: 2rem;
     position: relative;
     display: flex;
     flex-direction: column;

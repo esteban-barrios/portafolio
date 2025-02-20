@@ -1,6 +1,11 @@
-
-<section id="section-3" class="contact">contact</section>
+<section id="section-3" class="contact">
+  <div class="container">
+    <h1 class="title">Got a project in <br><span>Mind?</span></h1>
+  </div>
+</section>
 
 <style>
-  .contact { background: #8ecae6; }
+  .contact {
+    background: bisque;
+  }
 </style>

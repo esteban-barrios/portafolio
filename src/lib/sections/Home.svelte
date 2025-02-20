@@ -33,14 +33,9 @@
 
 <style>
   .home {
-    background-color: white;
+    background-color: #f9f9f9;
   }
-  .home .container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
+
   .home .content {
     display: flex;
     flex-direction: column;
@@ -53,6 +48,7 @@
     margin-inline: auto;
   }
   .home button {
+    margin-top: max(2rem, 3vh);
     align-self: flex-end;
   }
   @media (min-width: 1025px) {
