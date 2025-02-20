@@ -25,7 +25,7 @@
   const onClickLink = (id: number) => {
     let element = document.getElementById("section-" + id);
     if (element) {
-      let top = element.offsetTop +1;
+      let top = element.offsetTop + 1;
       window.scrollTo({
         top: top,
         behavior: "smooth",
@@ -40,7 +40,7 @@
 
 <nav>
   <div class="nav-container">
-    <div class="logo">Esteban</div>
+    <button class="logo" onclick={() => onClickLink(0)}>Esteban</button>
     <label class="hamburguer">
       <input id="hamburguer-toogle" type="checkbox" bind:checked={isOpen} />
       <i class="fas {isOpen ? 'fa-times' : 'fa-bars'}"></i>
@@ -96,6 +96,8 @@
     font-size: 2rem;
     font-family: "Monsieur La Doulaise", serif;
     font-weight: 400;
+    background-color: transparent;
+    padding: 0;
   }
   .menu {
     position: fixed;
@@ -113,19 +115,19 @@
   .menu.active {
     right: 0;
   }
-  
+
   .menu li {
     position: relative;
     margin: 1rem 0;
     z-index: 0;
     transition: all 0.3s ease;
   }
-  .menu li:hover{
-    scale:1.1;
+  .menu li:hover {
+    scale: 1.1;
   }
   .menu li.active {
     font-weight: bold;
-    scale:1.1;
+    scale: 1.1;
   }
 
   .menu li.active::after {
@@ -140,12 +142,13 @@
     z-index: -1;
   }
 
-  .menu li button{
+  .menu button {
+    font-weight: inherit;
     background-color: transparent;
     font-size: 1.25rem;
     text-transform: uppercase;
     padding: 0 1rem 0 0;
-    cursor:pointer;
+    cursor: pointer;
   }
 
   input[type="checkbox"] {
@@ -158,18 +161,17 @@
   @media (min-width: 768px) {
     main {
       top: 0;
-      width: max(85% - 4rem, 100% - 15rem - 4rem);
-      margin-left: min(15% + 4rem, 15rem + 4rem);
+      width: max(85% - 4rem, 100% - 10rem - 4rem);
+      margin-left: min(15% + 4rem, 10rem + 4rem);
     }
     nav {
       height: 100dvh;
-      width: min(15%, 15rem);
+      width: min(15%, 10rem);
       padding: 2rem;
       display: flex;
       flex-direction: column;
       justify-content: start;
       align-items: start;
-      gap: 1rem;
     }
     .nav-container {
       display: block;
@@ -177,7 +179,7 @@
       margin: 0;
     }
     .logo {
-      margin-bottom: 2rem;
+      margin-bottom: 4rem;
     }
     .hamburguer {
       display: none;

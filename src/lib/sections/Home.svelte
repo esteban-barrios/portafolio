@@ -39,7 +39,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
   .home .content {
     display: flex;
@@ -48,14 +48,14 @@
   }
 
   .home .img-container {
-    max-width: 20rem;
-    width: 80%;
+    max-width: 50vh;
+    width: 100%;
     margin-inline: auto;
   }
   .home button {
     align-self: flex-end;
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     .home .container {
       flex-direction: row;
       align-items: center;
@@ -64,7 +64,6 @@
       width: 50%;
     }
     .home .img-container {
-      max-width: 40rem;
       width: 50%;
     }
   }
