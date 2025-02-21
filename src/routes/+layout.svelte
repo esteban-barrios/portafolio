@@ -45,14 +45,27 @@
       <input id="hamburguer-toogle" type="checkbox" bind:checked={isOpen} />
       <i class="fas {isOpen ? 'fa-times' : 'fa-bars'}"></i>
     </label>
+    <ul class="menu {isOpen ? 'active' : ''}">
+      {#each sections as section, i}
+        <li class="link {currentSection === i ? 'active' : ''}">
+          <button onclick={() => onClickLink(i)}>{section}</button>
+        </li>
+      {/each}
+    </ul>
   </div>
-
-  <ul class="menu {isOpen ? 'active' : ''}">
-    {#each sections as section, i}
-      <li class="link {currentSection === i ? 'active' : ''}">
-        <button onclick={() => onClickLink(i)}>{section}</button>
-      </li>
-    {/each}
+  <ul class="social-links">
+    <li>
+      <img src="linkedin-icon.svg" alt="linkedin icon" />
+    </li>
+    <li>
+      <img src="github-icon.svg" alt="linkedin icon" />
+    </li>
+    <li>
+      <img src="insta-icon.svg" alt="linkedin icon" />
+    </li>
+    <li>
+      <img src="mail-icon.svg" alt="linkedin icon" />
+    </li>
   </ul>
 </nav>
 
@@ -98,6 +111,10 @@
     font-weight: 400;
     background-color: transparent;
     padding: 0;
+    transition: all 0.3s ease;
+  }
+  .logo:hover{
+    scale: 1.1;
   }
   .menu {
     position: fixed;
@@ -158,6 +175,10 @@
     font-size: 1.25rem;
   }
 
+  .social-links {
+    display: none;
+  }
+
   @media (min-width: 768px) {
     main {
       top: 0;
@@ -167,28 +188,45 @@
     nav {
       height: 100dvh;
       width: min(15%, 10rem);
-      padding: 2rem;
+      padding: 0rem 2rem;
       display: flex;
       flex-direction: column;
-      justify-content: start;
+      justify-content: space-between;
       align-items: start;
     }
     .nav-container {
       display: block;
       width: 100%;
-      margin: 0;
-    }
-    .logo {
-      margin-bottom: 4rem;
+      margin: 2rem 0rem;
     }
     .hamburguer {
       display: none;
     }
     .menu {
-      display: contents;
+      position: relative;
+      right: 0;
+      display: block;
     }
     .link {
       display: inline-block;
+    }
+    .social-links {
+      display: block;
+    }
+    .social-links li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+      background-color: #383d38;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .social-links li:hover {
+      scale: 1.1;
     }
   }
 </style>

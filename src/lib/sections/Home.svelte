@@ -44,7 +44,7 @@
 
   .home .img-container {
     max-width: 50vh;
-    width: 100%;
+    width: 80%;
     margin-inline: auto;
   }
   .home button {

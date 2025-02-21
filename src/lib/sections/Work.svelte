@@ -43,7 +43,6 @@
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 1rem;
-    padding: 2rem 0;
     justify-content: center;
     gap:2rem;
   }
@@ -53,8 +52,9 @@
     flex-shrink: 0;
     display: flex;
     flex-direction: row;
-    padding:2rem;
+    padding:1.2rem;
     border-radius: 5px;
+    cursor: pointer;
   }
   .project-card:hover {
     box-shadow: 12px 12px 12px rgba(0,0,0,0.1) , -10px -10px 10px white;
