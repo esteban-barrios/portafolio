@@ -47,13 +47,15 @@
     background: #f9f9f9;
   }
 
+  .about .content p {
+    margin-bottom: 4rem;
+  }
+  
   .timeline {
-    margin-top: 2rem;
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    width: 100%;
+    gap:2rem;
   }
 
   .timeline-item {
@@ -102,20 +104,12 @@
     background-color: #141313;
   }
 
-  .timeline-content h3,
-  .timeline-content h4 {
-    margin: 0;
-    font-size: clamp(0.75rem, 1vh + 0.25rem, 0.85rem);
-  }
-
   .timeline-content p {
-    margin: 0.5rem 0;
     color: #666;
-    font-size: clamp(0.5rem, 1vh + 0.25rem, 0.85rem);
   }
 
   .about button {
-    margin-top: 1rem;
+    margin-top: 4rem;
     align-self: flex-end;
     align-content: center;
   }

@@ -8,10 +8,10 @@
 <section id="section-0" class="home">
   <div class="container">
     <div class="content">
-      <div class="title">
+      <h1 class="title">
         <span>Full-Stack</span>
         Developer
-      </div>
+      </h1>
       <div class="description">
         <p>
           Software Engineer graduated from Universidad Técnica Federico Santa

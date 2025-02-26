@@ -38,11 +38,10 @@
   .form-container {
     background: linear-gradient(to right, #b86adf, #ff6c63, #ffb147);
     border-radius: 5px;
+    margin-bottom: 2rem;
   }
 
   .form-col {
-    min-height: 65dvh;
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -53,39 +52,29 @@
   }
 
   .form-col form {
-    height: 100%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5%;
-    font-size: clamp(0.5rem, 0.5rem + 1vh, 0.85rem);
+    flex-direction: column;
+    justify-content: start;
+    padding: 2rem;
   }
 
   form label {
     display: flex;
     flex-direction: column;
     font-weight: bold;
-    gap: 1.25rem;
-    width: 40%;
+    width: 100%;
     text-transform: uppercase;
     color: white;
   }
 
-  form label:nth-child(3) {
-    margin-top: 1.25rem;
-    width: 85%;
-  }
-
   .form-col form input,
   .form-col form textarea {
-    width: calc(100% - 1.6rem);
-    padding: 0.8rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
     border: none;
     border-radius: 10px;
     background: rgba(20, 20, 19, 0.1);
     color: white;
-    font-size: 1rem;
   }
 
   .form-col form input::placeholder,
@@ -98,7 +87,6 @@
     width: 85%;
     display: flex;
     justify-content: flex-end;
-    padding-top: 1.25rem;
   }
 
   .submit-container input:last-child {
@@ -113,14 +101,20 @@
     .form-col:first-child {
       display: flex;
     }
+    .form-col form {
+      padding: 0;
+    }
     .form-container {
       display: grid;
-      grid-template-columns: 40% 40%;
+      grid-template-columns: 50% 40%;
+      gap:2rem;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: center;
+      padding: 2rem;
     }
-    .form-container .image-container {
-      min-height: 24rem;
+    .image-container img {
+      object-fit: cover;
+      border-radius: 5px;
     }
   }
 </style>

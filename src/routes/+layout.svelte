@@ -7,21 +7,27 @@
   let currentSection = $state(0);
   let isOpen = $state(false);
   let y = $state(0);
-  let height = $state(0);
-  let section_height = $derived(height / sections.length);
 
   const handleOnScroll = () => {
-    let percentage = (y / (height - section_height)) * 100;
-    if (percentage >= 85) {
+    let sect1 = document.getElementById("section-1");
+    let sect2 = document.getElementById("section-2");
+    let sect3 = document.getElementById("section-3");
+
+    let sect3OffSet = sect3?.offsetTop != null ? (sect3.offsetTop * 3) / 4 : 0;
+    let sect2OffSet = sect2?.offsetTop != null ? (sect2.offsetTop * 3) / 4 : 0;
+    let sect1OffSet = sect1?.offsetTop != null ? (sect1.offsetTop * 3) / 4 : 0;
+
+    if (y > sect3OffSet) {
       currentSection = 3;
-    } else if (percentage >= 50) {
+    } else if (y > sect2OffSet) {
       currentSection = 2;
-    } else if (percentage >= 25) {
+    } else if (y > sect1OffSet) {
       currentSection = 1;
     } else {
       currentSection = 0;
     }
   };
+
   const onClickLink = (id: number) => {
     let element = document.getElementById("section-" + id);
     if (element) {
@@ -69,7 +75,7 @@
   </ul>
 </nav>
 
-<main bind:clientHeight={height}>
+<main>
   {@render children()}
 </main>
 
@@ -79,8 +85,6 @@
     top: 0;
     height: 4rem;
     width: 100%;
-    width: -webkit-fill-available;
-    font-size: 1.25rem;
     background-color: #141313;
     color: white;
     align-content: center;
@@ -94,7 +98,6 @@
     justify-content: flex-start;
     height: auto;
     width: 100%;
-    width: -webkit-fill-available;
   }
   .nav-container {
     width: 80%;
@@ -108,12 +111,13 @@
   .logo {
     font-size: 2rem;
     font-family: "Monsieur La Doulaise", serif;
-    font-weight: 400;
+    font-weight: normal;
+    text-transform: none;
     background-color: transparent;
     padding: 0;
     transition: all 0.3s ease;
   }
-  .logo:hover{
+  .logo:hover {
     scale: 1.1;
   }
   .menu {
@@ -125,8 +129,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: start;
+    gap: 2rem;
     transition: right 0.3s ease-in-out;
     background-color: #141313;
+    padding-bottom: 2rem;
   }
 
   .menu.active {
@@ -135,7 +141,6 @@
 
   .menu li {
     position: relative;
-    margin: 1rem 0;
     z-index: 0;
     transition: all 0.3s ease;
   }
@@ -151,10 +156,10 @@
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 0.4rem;
+    bottom: 0;
     width: 100%;
     height: 0.25rem;
-    transform: translateX(-50%); /* Centrar la línea con el texto */
+    transform: translateX(-50%);
     background: linear-gradient(50deg, #b86adf, #ff6c63, #ffb147);
     z-index: -1;
   }
@@ -164,8 +169,8 @@
     background-color: transparent;
     font-size: 1.25rem;
     text-transform: uppercase;
-    padding: 0 1rem 0 0;
     cursor: pointer;
+    padding: 0;
   }
 
   input[type="checkbox"] {
@@ -182,12 +187,12 @@
   @media (min-width: 768px) {
     main {
       top: 0;
-      width: max(85% - 4rem, 100% - 10rem - 4rem);
-      margin-left: min(15% + 4rem, 10rem + 4rem);
+      width: max(80% - 4rem, 100% - 16rem - 4rem);
+      margin-left: min(20% + 4rem, 16rem + 4rem);
     }
     nav {
       height: 100dvh;
-      width: min(15%, 10rem);
+      width: min(20%, 16rem);
       padding: 0rem 2rem;
       display: flex;
       flex-direction: column;
@@ -205,25 +210,27 @@
     .menu {
       position: relative;
       right: 0;
-      display: block;
+      align-items: start;
     }
     .link {
       display: inline-block;
     }
     .social-links {
       display: block;
+      margin-bottom: 2rem;
     }
     .social-links li {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 40px;
-      height: 40px;
+      width: 1.2rem;
+      height: 1.2rem;
       border-radius: 100%;
       background-color: #383d38;
       margin-bottom: 1rem;
       cursor: pointer;
       transition: all 0.3s ease;
+      padding: 0.25rem;
     }
     .social-links li:hover {
       scale: 1.1;
