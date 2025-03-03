@@ -24,12 +24,12 @@
             <h3>{project.name}</h3>
             <img
               class="arrow-icon"
-              src="top-right.svg"
+              src="icons/top-right.svg"
               alt="{project.name} navigation arrow"
             />
           </div>
           <div class="project-img">
-            <img src={project.imgSrc} alt="{project.name} preview" />
+            <img src="img/projects/{project.imgSrc}" alt="{project.name} preview" />
           </div>
         </div>
       {/each}

@@ -26,7 +26,7 @@
       <button onclick={onClickButton}> About Me </button>
     </div>
     <div class="img-container">
-      <img src="home-img-2.png" alt="Esteban's avatar" />
+      <img src="img/home-img.png" alt="Esteban's avatar" />
     </div>
   </div>
 </section>

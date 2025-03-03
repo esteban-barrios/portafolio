@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "$lib/global.css";
+  import '$lib/app.css';
 
   let { children } = $props();
 
@@ -61,16 +61,16 @@
   </div>
   <ul class="social-links">
     <li>
-      <img src="linkedin-icon.svg" alt="linkedin icon" />
+      <img src="icons/linkedin-icon.svg" alt="linkedin icon" />
     </li>
     <li>
-      <img src="github-icon.svg" alt="linkedin icon" />
+      <img src="icons/github-icon.svg" alt="linkedin icon" />
     </li>
     <li>
-      <img src="insta-icon.svg" alt="linkedin icon" />
+      <img src="icons/insta-icon.svg" alt="linkedin icon" />
     </li>
     <li>
-      <img src="mail-icon.svg" alt="linkedin icon" />
+      <img src="icons/mail-icon.svg" alt="linkedin icon" />
     </li>
   </ul>
 </nav>

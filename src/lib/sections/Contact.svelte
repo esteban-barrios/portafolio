@@ -4,7 +4,7 @@
     <div class="form-container">
       <div class="form-col">
         <div class="image-container">
-          <img src="contact-img.svg" alt="contact img" />
+          <img src="img/contact-img.svg" alt="contact img" />
         </div>
       </div>
       <div class="form-col">
@@ -33,7 +33,7 @@
 
 <style>
   .contact {
-    background: whitesmoke;
+    background: #f9f9f9;
   }
   .form-container {
     background: linear-gradient(to right, #b86adf, #ff6c63, #ffb147);

@@ -1,3 +1,5 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
 :root {
   --font-body: "IBM Plex Sans", sans-serif;
   --color-primary: #fd853a;
