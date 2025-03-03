@@ -1,6 +1,6 @@
 <script lang="ts">
   const onClickButton = () => {
-    let element = document.getElementById("section-1");
+    let element = document.getElementById("section-3");
     element?.scrollIntoView();
   };
 </script>
@@ -23,7 +23,7 @@
           >
         </p>
       </div>
-      <button onclick={onClickButton}> About Me </button>
+      <button onclick={onClickButton}> Get in Touch </button>
     </div>
     <div class="img-container">
       <img src="img/home-img.png" alt="Esteban's avatar" />
@@ -33,9 +33,8 @@
 
 <style>
   .home {
-    background-color: #f9f9f9;
+    justify-content: space-around;
   }
-
   .home .content {
     display: flex;
     flex-direction: column;
@@ -44,23 +43,28 @@
 
   .home .img-container {
     max-width: 50vh;
-    width: 80%;
     margin-inline: auto;
   }
   .home button {
     margin-top: max(2rem, 3vh);
-    align-self: flex-end;
   }
-  @media (min-width: 1025px) {
+  @media (min-width: 1439px) {
+    .home {
+      justify-content: space-around;
+    }
     .home .container {
       flex-direction: row;
       align-items: center;
     }
     .home .content {
       width: 50%;
+      margin-inline: none;
     }
     .home .img-container {
       width: 50%;
+    }
+    .home button{
+      align-self: flex-end;
     }
   }
 </style>

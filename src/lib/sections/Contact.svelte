@@ -29,16 +29,31 @@
       </div>
     </div>
   </div>
+  <div class="social-link-container">
+    <ul class="social-links">
+      <li>
+        <img src="icons/linkedin-icon.svg" alt="linkedin icon" />
+      </li>
+      <li>
+        <img src="icons/github-icon.svg" alt="linkedin icon" />
+      </li>
+      <li>
+        <img src="icons/insta-icon.svg" alt="linkedin icon" />
+      </li>
+      <li>
+        <img src="icons/mail-icon.svg" alt="linkedin icon" />
+      </li>
+    </ul>
+  </div>
 </section>
 
 <style>
-  .contact {
-    background: #f9f9f9;
-  }
   .form-container {
     background: linear-gradient(to right, #b86adf, #ff6c63, #ffb147);
     border-radius: 5px;
     margin-bottom: 2rem;
+    max-width: 80ch;
+    margin-inline: auto;
   }
 
   .form-col {
@@ -91,12 +106,39 @@
 
   .submit-container input:last-child {
     width: max-content;
-    background-color: #141313;
+    background-color: rgb(17, 17, 17);
     color: white;
     font-weight: bold;
     text-transform: uppercase;
   }
-
+  .social-link-container{
+    display: flex;
+    justify-content: center;
+  }
+  .social-links {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2rem;
+    gap:2rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .social-links li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 100%;
+    background-color: #383d38;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.25rem;
+  }
+  .social-links li:hover {
+    scale: 1.1;
+  }
   @media (min-width: 1025px) {
     .form-col:first-child {
       display: flex;
@@ -107,7 +149,7 @@
     .form-container {
       display: grid;
       grid-template-columns: 50% 40%;
-      gap:2rem;
+      gap: 2rem;
       align-items: center;
       justify-content: center;
       padding: 2rem;

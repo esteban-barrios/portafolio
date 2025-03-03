@@ -59,20 +59,6 @@
       {/each}
     </ul>
   </div>
-  <ul class="social-links">
-    <li>
-      <img src="icons/linkedin-icon.svg" alt="linkedin icon" />
-    </li>
-    <li>
-      <img src="icons/github-icon.svg" alt="linkedin icon" />
-    </li>
-    <li>
-      <img src="icons/insta-icon.svg" alt="linkedin icon" />
-    </li>
-    <li>
-      <img src="icons/mail-icon.svg" alt="linkedin icon" />
-    </li>
-  </ul>
 </nav>
 
 <main>
@@ -85,7 +71,7 @@
     top: 0;
     height: 4rem;
     width: 100%;
-    background-color: #141313;
+    background-color: rgb(17, 17, 17);
     color: white;
     align-content: center;
     z-index: 10;
@@ -131,7 +117,7 @@
     justify-content: start;
     gap: 2rem;
     transition: right 0.3s ease-in-out;
-    background-color: #141313;
+    background-color: rgb(17, 17, 17);
     padding-bottom: 2rem;
   }
 
@@ -165,9 +151,9 @@
   }
 
   .menu button {
+    font-size: 1.25rem;
     font-weight: inherit;
     background-color: transparent;
-    font-size: 1.25rem;
     text-transform: uppercase;
     cursor: pointer;
     padding: 0;
@@ -180,19 +166,16 @@
     font-size: 1.25rem;
   }
 
-  .social-links {
-    display: none;
-  }
-
-  @media (min-width: 768px) {
+  @media (min-width: 809px) {
     main {
       top: 0;
-      width: max(80% - 4rem, 100% - 16rem - 4rem);
-      margin-left: min(20% + 4rem, 16rem + 4rem);
+      width: max(80% - 4rem, 100% - 12.5rem - 4rem);
+      margin-left: min(20% + 4rem, 12.5rem + 4rem);
     }
     nav {
       height: 100dvh;
-      width: min(20%, 16rem);
+      width: 20%;
+      max-width: 12.5rem;
       padding: 0rem 2rem;
       display: flex;
       flex-direction: column;
@@ -210,30 +193,12 @@
     .menu {
       position: relative;
       right: 0;
+      margin-left: 2rem;
       align-items: start;
     }
     .link {
       display: inline-block;
     }
-    .social-links {
-      display: block;
-      margin-bottom: 2rem;
-    }
-    .social-links li {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 1.2rem;
-      height: 1.2rem;
-      border-radius: 100%;
-      background-color: #383d38;
-      margin-bottom: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      padding: 0.25rem;
-    }
-    .social-links li:hover {
-      scale: 1.1;
-    }
   }
+
 </style>

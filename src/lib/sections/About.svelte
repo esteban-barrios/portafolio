@@ -5,10 +5,9 @@
       <p>
         Experienced software developer skilled in multiple languages (HTML, CSS,
         JS, TS, Python, C++, C#, PHP, Java) and frameworks (Angular, React,
-        Flutter, Django, WordPress). Proficient in database management
-        (PostgreSQL, MongoDB) and cloud deployment (Docker, AWS, GitHub).
-        Focused on building scalable, high-performance solutions with CI/CD
-        integration.
+        Flutter, Django, WordPress). <br /><br /> Proficient in database management
+        (PostgreSQL, MongoDB) and cloud deployment (Docker, AWS, GitHub). Focused
+        on building scalable, high-performance solutions with CI/CD integration.
       </p>
     </div>
 
@@ -38,24 +37,20 @@
       </div>
     </div>
 
-    <button>Resume <span><i class="fa-solid fa-download"></i></span> </button>
+    <button>My CV <span><i class="fa-solid fa-download"></i></span> </button>
   </div>
 </section>
 
 <style>
-  .about {
-    background: #f9f9f9;
+  .about .content p {
+    margin-bottom: 6rem;
   }
 
-  .about .content p {
-    margin-bottom: 4rem;
-  }
-  
   .timeline {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap:2rem;
+    gap: 2rem;
   }
 
   .timeline-item {
@@ -84,7 +79,7 @@
   .timeline-item .circle {
     padding: min(0.5rem, 1vh);
     border-radius: 50%;
-    border: 2px dashed #141313;
+    border: 2px dashed rgb(17, 17, 17);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,7 +96,7 @@
   }
 
   .circle.dark::before {
-    background-color: #141313;
+    background-color: rgb(17, 17, 17);
   }
 
   .timeline-content p {
@@ -138,8 +133,8 @@
       width: 2px;
       background: repeating-linear-gradient(
         to bottom,
-        #141313,
-        #141313 5px,
+        rgb(17, 17, 17),
+        rgb(17, 17, 17) 5px,
         transparent 5px,
         transparent 10px
       );
